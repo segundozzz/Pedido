@@ -3,72 +3,54 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pedido Especial ❤️</title>
+  <title>Pedido Especial 💖</title>
   <style>
     body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #ffafbd, #ffc3a0);
+      text-align: center;
       margin: 0;
       padding: 0;
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
-      font-family: "Arial", sans-serif;
-      color: #fff;
-      text-align: center;
-    }
-
-    .container {
-      text-align: center;
-      width: 90%;
-      max-width: 400px;
-    }
-
-    h1 {
-      margin-bottom: 20px;
-      font-size: 1.8rem;
     }
 
     button {
-      background: #ff4b5c;
+      background: #ff4081;
       color: white;
-      padding: 15px 25px;
-      font-size: 1.2rem;
       border: none;
-      border-radius: 10px;
+      padding: 15px 25px;
+      margin-top: 20px;
+      font-size: 1.2em;
+      border-radius: 12px;
       cursor: pointer;
-      transition: background 0.3s;
-      margin: 10px;
+      transition: transform 0.2s, background 0.3s;
     }
 
     button:hover {
-      background: #e63946;
+      background: #e91e63;
+      transform: scale(1.05);
     }
 
     .progress-container {
-      width: 100%;
-      background: rgba(255,255,255,0.3);
+      width: 80%;
+      max-width: 400px;
+      height: 20px;
+      background: #ddd;
       border-radius: 10px;
-      margin-top: 20px;
+      margin: 40px auto;
       display: none;
-      height: 25px;
-      overflow: hidden;
     }
 
     .progress-bar {
-      height: 100%;
       width: 0;
-      background: #ff4b5c;
+      height: 100%;
+      background: #ff4081;
       border-radius: 10px;
       transition: width 0.2s;
     }
 
-    /* Seções */
-    .final-section, .pedido-section {
+    .final-section, .pedido-section, .resposta-section {
       display: none;
-      width: 100%;
-      max-width: 800px;
-      margin: 0 auto;
+      padding: 20px;
       animation: aparecer 1s ease-in-out;
     }
 
@@ -78,137 +60,106 @@
     }
 
     header {
-      padding: 20px;
-      font-size: 2rem;
-      font-weight: bold;
-      text-shadow: 2px 2px 5px rgba(0,0,0,0.3);
-    }
-
-    .texto {
+      font-size: 1.6em;
       margin: 20px;
-      font-size: 1.2rem;
-      line-height: 1.6;
+      color: #d81b60;
     }
 
-    .galeria {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    .photo-gallery {
+      display: flex;
+      flex-direction: column;
       gap: 15px;
-      padding: 20px;
+      margin-bottom: 20px;
     }
 
-    .galeria img {
+    .photo-gallery img {
       width: 100%;
-      border-radius: 15px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.4);
-      transition: transform 0.3s;
+      max-width: 350px;
+      margin: 0 auto;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
     }
 
-    .galeria img:hover {
-      transform: scale(1.05);
+    .texto-amor {
+      font-size: 1.1em;
+      line-height: 1.6;
+      text-align: center;
+      padding: 0 15px;
     }
 
-    footer {
-      margin: 30px 10px;
-      font-size: 1.3rem;
-      font-weight: bold;
-    }
-
-    .mensagem-final {
-      display: none;
-      font-size: 1.8rem;
-      margin-top: 20px;
-      animation: aparecer 1s ease-in-out;
-    }
-
-    /* Corações animados */
-    .cora {
-      position: fixed;
-      bottom: -10px;
-      color: red;
-      font-size: 20px;
-      animation: subir 6s linear infinite;
-      pointer-events: none;
-    }
-
-    @keyframes subir {
-      0% { transform: translateY(0) scale(1); opacity: 1; }
-      100% { transform: translateY(-110vh) scale(1.5); opacity: 0; }
+    .resposta {
+      font-size: 1.3em;
+      margin-top: 25px;
+      color: #6a1b9a;
     }
   </style>
 </head>
 <body>
-  <!-- Tela inicial -->
-  <div class="container" id="inicio">
-    <h1>Bem-vinda ❤️</h1>
-    <button id="startBtn">Eu tenho um pedido especial para você!</button>
+  <!-- Tela Inicial -->
+  <h1>💝 Bem-vinda, meu amor 💝</h1>
+  <button id="startBtn">Eu tenho um pedido especial para você</button>
 
-    <div class="progress-container">
-      <div class="progress-bar" id="progressBar"></div>
-    </div>
+  <div class="progress-container">
+    <div class="progress-bar" id="progressBar"></div>
   </div>
 
-  <!-- Seção romântica -->
+  <!-- Tela 2: Fotos + Texto -->
   <div class="final-section" id="final">
     <header>💖 Para a pessoa mais especial da minha vida 💖</header>
 
-    <div class="texto">
-      <p>
-        Amor eu sei que pode ter demorado um pouco, mas eu queria que fosse especial, assim como tem sido desde o começo.
-        Sem dúvidas você é o melhor presente que Deus poderia me dar, só ele sabe o quanto eu esperei por você e orei
-        para que ele me trouxesse alguém assim como você, sem colocar nem por, igualzinho você.
-        Eu tenho tanto orgulho de você e da pessoa que você é, e não tenho palavras para descrever o quanto sou feliz ao seu lado.
-        Eu quero que esse seja o primeiro de muitos pedidos, a primeira de muitas datas especiais com você.
-        Eu te amo meu amor, e espero que você aceite esse pedido. ❤️ 
-      </p>
-    </div>
-
-    <div class="galeria">
+    <!-- Fotos primeiro -->
+    <div class="photo-gallery">
       <img src="foto1.jpg" alt="Nossa foto 1">
       <img src="foto2.jpg" alt="Nossa foto 2">
       <img src="foto3.jpg" alt="Nossa foto 3">
-      <img src="foto4.jpg" alt="Nossa foto 4">
     </div>
 
-    <footer>
-      <button onclick="irParaPedido()">👉 Continuar</button>
-    </footer>
+    <!-- Texto depois -->
+    <p class="texto-amor">
+      Desde o dia em que você entrou na minha vida, tudo mudou para melhor.  
+      Eu não poderia imaginar um caminho mais bonito do que ao seu lado.
+    Amor eu sei que pode ter demorado um pouco, mas eu queria que fosse especial, assim como tem sido dês de o começo.
+    Sem duvidas nenhum você é o melhor presente que Deus poderia me dar, só ele sabe o quanto eu esperei por você e orei
+    pra que ele me trouxesse alguém assim como você, sem colocar nem por, igualzinho você, eu tenho tanto orgulho de você e da
+    pessoa que você e não tenho palavras pra descrever o quão sou feliz ao seu lado, eu quero que esse seja o primeiro de muitos pedidos,
+    a primeira de muitas datas especias com você. Eu te amo meu amor, e espero que você aceite esse pedido. ❤️ 
+    </p>
+
+    <button id="goToPedido">👉 Tenho algo a te perguntar...</button>
   </div>
 
-  <!-- Tela do pedido -->
+  <!-- Tela do Pedido -->
   <div class="pedido-section" id="pedido">
-    <header>💍 O grande momento chegou 💍</header>
-    <p class="texto">Você aceita namorar comigo, meu amor? ❤️</p>
-
-    <button onclick="responder('sim')">Sim, eu aceito!</button>
-    <button onclick="responder('nao')">Não</button>
-
-    <div class="mensagem-final" id="mensagemFinal"></div>
+    <header>🌹 Quer namorar comigo? 🌹</header>
+    <button id="simBtn">💖 Sim, eu aceito!</button>
+    <button id="naoBtn">🙈 Não</button>
   </div>
 
-  <!-- Música -->
-  <audio id="musica" loop>
-    <source src="musica.mp3" type="audio/mpeg">
-    Seu navegador não suporta áudio.
-  </audio>
+  <!-- Tela de Resposta -->
+  <div class="resposta-section" id="resposta">
+    <p class="resposta" id="mensagemResposta"></p>
+  </div>
+
+  <audio id="musica" src="musica.mp3"></audio>
 
   <script>
     const startBtn = document.getElementById("startBtn");
     const progressContainer = document.querySelector(".progress-container");
     const progressBar = document.getElementById("progressBar");
     const finalSection = document.getElementById("final");
-    const inicio = document.getElementById("inicio");
-    const pedido = document.getElementById("pedido");
+    const goToPedido = document.getElementById("goToPedido");
+    const pedidoSection = document.getElementById("pedido");
+    const simBtn = document.getElementById("simBtn");
+    const naoBtn = document.getElementById("naoBtn");
+    const respostaSection = document.getElementById("resposta");
+    const mensagemResposta = document.getElementById("mensagemResposta");
     const musica = document.getElementById("musica");
-    const mensagemFinal = document.getElementById("mensagemFinal");
 
+    // Tela inicial
     startBtn.addEventListener("click", () => {
       startBtn.style.display = "none";
       progressContainer.style.display = "block";
-
-      // Inicia música
-      musica.volume = 0.6;
-      musica.play().catch(() => {});
+      musica.play();
 
       let progress = 0;
       const interval = setInterval(() => {
@@ -217,44 +168,30 @@
 
         if (progress >= 100) {
           clearInterval(interval);
-
-          // Esconde a tela inicial
-          inicio.style.display = "none";
-
-          // Mostra a seção final (texto + fotos)
+          progressContainer.style.display = "none";
           finalSection.style.display = "block";
         }
-      }, 100); // 5 segundos
+      }, 100);
     });
 
-    function irParaPedido() {
+    // Ir para o pedido
+    goToPedido.addEventListener("click", () => {
       finalSection.style.display = "none";
-      pedido.style.display = "block";
-    }
+      pedidoSection.style.display = "block";
+    });
 
-    function responder(opcao) {
-      mensagemFinal.style.display = "block";
+    // Botão "Sim"
+    simBtn.addEventListener("click", () => {
+      pedidoSection.style.display = "none";
+      respostaSection.style.display = "block";
+      mensagemResposta.textContent = "Você me fez a pessoa mais feliz desse mundo! 💕🥰";
+    });
 
-      if (opcao === "sim") {
-        mensagemFinal.innerHTML = "🥰 Você me fez a pessoa mais feliz do mundo! ❤️";
-        for (let i = 0; i < 20; i++) {
-          setTimeout(soltarCoracoes, i * 200);
-        }
-      } else {
-        mensagemFinal.innerHTML = "🚫 Essa opção não está disponível 😅";
-      }
-    }
-
-    // Criar corações subindo
-    function soltarCoracoes() {
-      const cora = document.createElement("div");
-      cora.classList.add("cora");
-      cora.innerHTML = "❤️";
-      cora.style.left = Math.random() * window.innerWidth + "px";
-      document.body.appendChild(cora);
-      setTimeout(() => cora.remove(), 6000);
-    }
-    setInterval(soltarCoracoes, 1000);
+    // Botão "Não"
+    naoBtn.addEventListener("click", () => {
+      mensagemResposta.textContent = "Essa opção não está disponível 🙈💔";
+      respostaSection.style.display = "block";
+    });
   </script>
 </body>
 </html>
