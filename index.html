@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pedido Especial ❤️</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      font-family: "Arial", sans-serif;
+    }
+
+    .container {
+      text-align: center;
+      width: 90%;
+      max-width: 400px;
+    }
+
+    h1 {
+      color: #fff;
+      margin-bottom: 20px;
+      font-size: 1.8rem;
+    }
+
+    button {
+      background: #ff4b5c;
+      color: white;
+      padding: 15px 25px;
+      font-size: 1.2rem;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background 0.3s;
+      width: 100%;
+    }
+
+    button:hover {
+      background: #e63946;
+    }
+
+    .progress-container {
+      width: 100%;
+      background: rgba(255,255,255,0.3);
+      border-radius: 10px;
+      margin-top: 20px;
+      display: none;
+      height: 25px;
+      overflow: hidden;
+    }
+
+    .progress-bar {
+      height: 100%;
+      width: 0;
+      background: #ff4b5c;
+      border-radius: 10px;
+      transition: width 0.2s;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Bem-vinda ❤️</h1>
+    <button id="startBtn">Eu tenho um pedido especial para você!</button>
+
+    <div class="progress-container">
+      <div class="progress-bar" id="progressBar"></div>
+    </div>
+  </div>
+
+  <script>
+    const startBtn = document.getElementById("startBtn");
+    const progressContainer = document.querySelector(".progress-container");
+    const progressBar = document.getElementById("progressBar");
+
+    startBtn.addEventListener("click", () => {
+      startBtn.style.display = "none";
+      progressContainer.style.display = "block";
+
+      let progress = 0;
+      const interval = setInterval(() => {
+        progress += 2;
+        progressBar.style.width = progress + "%";
+
+        if (progress >= 100) {
+          clearInterval(interval);
+          // Redireciona para outra página (fotos + texto)
+          window.location.href = "pedido.html";
+        }
+      }, 100); // 100ms → barra leva 5s pra carregar
+    });
+  </script>
+</body>
+</html>
